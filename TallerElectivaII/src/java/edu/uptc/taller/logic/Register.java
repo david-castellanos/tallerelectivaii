@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author guita
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "Register", urlPatterns = {"/register"})
+public class Register extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,20 +35,25 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String user = request.getParameter("user");
+        String id = request.getParameter("idUsuario");
+        String name = request.getParameter("name");
+        String lname = request.getParameter("lname");
+        String bdate = request.getParameter("Birthday");
+        String gender = request.getParameter("gender");
+        String email = request.getParameter("Email");
         String pass = request.getParameter("password");
         ManagementDB mng = new ManagementDB();
 
-        if (mng.validateUser(user, pass)) {
-            RequestDispatcher rs = request.getRequestDispatcher("welcome.html");
-            rs.include(request, response);
+        if (mng.registerUser(id, name, lname, pass, bdate, gender, email)) {
+            response.sendRedirect("index.jsp");
         } else {
-            response.sendRedirect("Registrar.jsp");
-            
+            RequestDispatcher rs = request.getRequestDispatcher("Registrar.jsp");
+            rs.include(request, response);
+            out.print("<script>alert('error')</script>");
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
