@@ -14,7 +14,7 @@
                	
                  <h1>REGISTRAR</h1>
                 
-                <form class="form" action="register" method="get" >
+                <form class="form" action="register" method="post" >
                     
                     <input type="number" placeholder="id" name="idUsuario" required="required">
                     <input type="text" placeholder="Nombre" name="name" required="required">
