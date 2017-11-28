@@ -11,9 +11,7 @@
     <body>
         <div class="wrapper">
             <div class="container">
-                <font face="univers" size="6" color="red"> 
-                       Usuario no existe
-                </font> 
+                
                  <h1>REGISTRAR</h1>
                 
                 <form class="form" action="register" method="post" >
